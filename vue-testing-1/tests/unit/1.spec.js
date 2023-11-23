@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils"
 
 const App = {
-  props: {
-    count: {
-      type: Number
+  data () {
+    return {
+      count: 0
     }
   },
   template: `
@@ -16,20 +16,30 @@ const App = {
   `
 }
 
-const factory = (props) => {
+const factory = ({ data }) => {
   return mount(App, {
-    props
+    data() {
+      return data
+    }
   })
 }
 
 describe('App', () => {
   it('test for odd', () => {
-    const wrapper = factory({ count: 1 })
+    const wrapper = factory({ 
+      data: {
+        count: 1
+      }
+    })
     expect(wrapper.html()).toContain('Count: 1. Count is odd')
   })
-  
+
   it('test for even', () => {
-    const wrapper = factory({ count: 2})
+    const wrapper = factory({ 
+      data: {
+        count: 2
+      }
+    })
     expect(wrapper.html()).toContain('Count: 2. Count is even')
   })
 })
