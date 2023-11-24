@@ -11,10 +11,11 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 import { useStore } from 'vuex';
 
-const store = useStore()
+// const store = useStore()
+const store = inject('store')
 const count = computed(() => store.state.count)
 
 const increment = () => {
