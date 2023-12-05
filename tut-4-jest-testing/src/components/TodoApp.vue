@@ -34,7 +34,9 @@ export default {
         id: 2,
         text: this.newTodo,
         completed: true,
-      })
+      });
+
+      this.newTodo = ""
     }
   },
 }

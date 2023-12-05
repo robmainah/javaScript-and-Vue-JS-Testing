@@ -20,5 +20,6 @@ describe('TodoApp', () => {
     wrapper.get('[data-test="form"]').trigger('submit')
     await nextTick()
     expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2)
+    expect(wrapper.get('[data-test="new-todo"]').element.value).toBe("")
   })
 })
