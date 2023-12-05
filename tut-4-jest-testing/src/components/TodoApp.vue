@@ -7,6 +7,9 @@
         {{ todo.text }}
       </li>
     </ul>
+    <form @submit.prevent="createTodo" data-test="form">
+      <input data-test="new-todo" v-model="newTodo" type="text" />
+    </form>
   </div>
 </template>
 
@@ -15,6 +18,7 @@ export default {
   name: 'TodoApp',
   data() {
     return {
+      newTodo: "",
       todos: [
         {
           id: 1,
@@ -22,6 +26,15 @@ export default {
           completed: false,
         }
       ]
+    }
+  },
+  methods: {
+    createTodo() {
+      this.todos.push({
+        id: 2,
+        text: this.newTodo,
+        completed: true,
+      })
     }
   },
 }
