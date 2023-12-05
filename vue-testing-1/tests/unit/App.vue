@@ -7,18 +7,35 @@
       <div v-else>
         Count: {{ count }}. Count is odd
       </div>
+
+      <Fetcher />
   </div>
 </template>
 
-<script setup>
+<script>
 import { computed, inject, ref } from 'vue';
 import { useStore } from 'vuex';
+import Fetcher from './Fetcher.vue';
 
-// const store = useStore()
-const store = inject('store')
-const count = computed(() => store.state.count)
+import axios from 'axios';
 
-const increment = () => {
-  store.commit('increment')
+export default {
+  components: {
+    Fetcher
+  },
+  setup() {
+    // const store = useStore()
+    const store = inject('store')
+    const count = computed(() => store.state.count)
+
+    const increment = () => {
+      store.commit('increment')
+    }
+
+    return {
+      count,
+      increment
+    }
+  }
 }
 </script>
