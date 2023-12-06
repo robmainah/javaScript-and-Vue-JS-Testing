@@ -3,8 +3,9 @@
     <h1>Learn vue testing</h1>
 
     <ul>
-      <li v-for="(todo, index) in todos" :key="index" data-test="todo">
+      <li v-for="(todo, index) in todos" :key="index" data-test="todo" :class="{'completed': todo.completed }">
         {{ todo.text }}
+        <input v-model="todo.completed" type="checkbox" data-test="todo-checkbox" />
       </li>
     </ul>
     <form @submit.prevent="createTodo" data-test="form">
@@ -41,4 +42,8 @@ export default {
   },
 }
 </script>
-
+<style>
+.completed {
+  color: red;
+}
+</style>
