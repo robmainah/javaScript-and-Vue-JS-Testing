@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "msw": "^2.0.10",
+    "whatwg-fetch": "^3.6.19"
+  }
+}
